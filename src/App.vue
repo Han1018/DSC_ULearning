@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <appbar />
-    <router-view></router-view>
+    <v-content style="height: 100vh; max-height: 100%">
+      <router-view></router-view>
+    </v-content>
   </v-app>
 </template>
 
