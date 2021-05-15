@@ -51,44 +51,42 @@ router.get("/api/v1/course/:id", async (req, res) => {
   let majorId = req.params.id - 1; //前端預設為1開始，所以減1
 
   // console.log(await models.opencourse_infos.findAll({ where: { major: majorsList[majorId]} }));
-  const subList = await models.opencourse_infos.findAll({ where: { major: majorsList[majorId] }, group: 'sub_major', raw: true })
-    .then(items => {
-      let result = [];
-      items.forEach(e => { result.push(e['sub_major']); });
-      return (result);
-    })
-    .catch(err => {
-      console.log("xxx => ", err);
-      res.status(400);
-    });
+  let subList = [];
+  try {
+    const items = await models.opencourse_infos.findAll({ where: { major: majorsList[majorId] }, group: 'sub_major', raw: true });
+    items.forEach(e => { subList.push(e['sub_major']); });
+  } catch (error) {
+    console.log("xxx => ", err);
+    res.status(400);
+  }
 
   //搜尋sub_major 的所有課程
   let courses = []
   console.log("---------------------------");
   for (let i = 0; i < subList.length; i++) {
-    const result = await models.opencourse_infos.findAll({ where: { sub_major: subList[i] } })
-      .then(items => {
-        let tmp = {};
-        let children = [];
-        tmp.id = i + 1;
-        tmp.name = subList[i];
+    let tmp = {};
+    let children = [];
+    tmp.id = i + 1;
+    tmp.name = subList[i];
 
-        for (let j = 0; j < items.length; j++) {
-          children.push({
-            id: j + 1,
-            name: items[j].dataValues.title,
-            desc: items[j].dataValues.desription,
-            link: items[j].dataValues.link
-          })
-        }
-        tmp.children = children;
-        return tmp;
-      })
-      .catch(err => {
-        console.log("sub_major => ", err);
-        res.status(400);
-      })
-    courses.push(result);
+    console.label();
+    try {
+      const items = await models.opencourse_infos.findAll({ where: { sub_major: subList[i] } });
+      for (let j = 0; j < items.length; j++) {
+        children.push({
+          id: j + 1,
+          name: items[j].dataValues.title,
+          desc: items[j].dataValues.desription,
+          link: items[j].dataValues.link
+        })
+      }
+      tmp.children = children;
+      courses.push(result);
+
+    } catch (error) {
+      console.log("sub_major => ", err);
+      res.status(400);
+    }
   }
 
   res.json(courses);
