@@ -12,6 +12,7 @@ export default new Vuetify({
         tertiary: "#ef9a9a",
         quaternary: "#263238",
         quinary: "#ffffff",
+        white: "#ffffff",
       },
     },
   },
