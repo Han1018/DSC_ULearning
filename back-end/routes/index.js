@@ -26,21 +26,33 @@ router.get("/api/v1/subjects", (req, res, next) => {
 
 
 // 建立course tree api 
-// GET api/v1/majors
-router.get("/api/v1/majors/:id", (req, res, next) => {
-  let majorsList = ["程式基礎", "崁入式系統", "網路應用", "人工智慧", "數據分析"]
-  var result = []
-  if (req.params.id != 1) { res.json({}) }
-  for (let i = 0; i < majorsList.length; i++) {
-    result.push(
-      {
-        id: i + 1,
-        name: majorsList[i],
-        desription: "wiki"
-      }
-    );
+// GET api/v1/majors/[id]
+router.get("/api/v1/majors/:id", async (req, res, next) => {
+  if (req.params.id != 0) { res.status(400); }
+
+  var subjectsList = ["資訊工程", "國際貿易", "經濟", "機械工程", "日語文學", "英語文學", "設計", "心理學"]
+
+  let result = []
+  let subjId = req.params.id;
+  try {
+    const majors = await models.majors.findAll({ where: { subj: subjectsList[subjId] } });
+
+    for (let i = 0; i < majors.length; i++) {
+      result.push(
+        {
+          id: i + 1,
+          name: majors[i].major,
+          desription: majors[i].description
+        }
+      );
+    }
+    console.log(result);
+    res.json(result);
+
+  } catch (error) {
+    console.log("err=>", error);
+    res.status(400);
   }
-  res.json(result);
 });
 
 
