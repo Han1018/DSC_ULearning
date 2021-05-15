@@ -47,7 +47,6 @@ router.get("/api/v1/majors/:id", async (req, res, next) => {
         }
       );
     }
-    console.log(result);
     res.json(result);
 
   } catch (error) {
