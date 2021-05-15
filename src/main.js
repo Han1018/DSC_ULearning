@@ -5,10 +5,13 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import firebase from "firebase";
 import config from "./firebaseConfig.js";
+import axios from "axios";
+import VueAxios from "vue-axios";
 
 Vue.config.productionTip = false;
 firebase.initializeApp(config);
 firebase.analytics();
+Vue.use(VueAxios, axios);
 
 new Vue({
   router,

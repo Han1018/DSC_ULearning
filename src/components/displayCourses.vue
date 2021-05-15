@@ -1,87 +1,49 @@
 <template>
-  <v-treeview
-    style="text-overflow: ellipsis"
-    open-all
-    :items="items"
-  ></v-treeview>
+  <v-card elevation="0">
+    <div v-if="courses.length > 0">
+      <v-card
+        elevation="0"
+        :color="colors[Math.floor(Math.random() * colors.length)]"
+        dark
+        class="mx-auto my-5"
+        v-for="(item, index) in courses"
+        :key="index"
+      >
+        <v-card-title class="text-h5"> {{ item.name }} </v-card-title>
+        <v-card-subtitle>
+          {{ item.desription }}
+        </v-card-subtitle>
+        <br />
+        <v-btn text :to="{ name: 'Courses' }"> 選擇向度 </v-btn>
+      </v-card>
+    </div>
+    <div v-else>
+      <v-card
+        elevation="0"
+        :color="colors[Math.floor(Math.random() * colors.length)]"
+        dark
+        class="mx-auto my-5"
+      >
+        <v-card-title class="text-h5"> 尚無課程 </v-card-title>
+        <v-card-subtitle> Empty </v-card-subtitle>
+      </v-card>
+    </div>
+  </v-card>
 </template>
 <script>
 export default {
   data() {
     return {
-      items: [
-        {
-          id: 1,
-          name: "影像處理 :",
-          children: [
-            { id: 2, name: "電腦圖學" },
-            { id: 3, name: "線性代數" },
-            { id: 4, name: "OpenCV" },
-          ],
-        },
-        {
-          id: 5,
-          name: "人工智慧 :",
-          children: [
-            {
-              id: 6,
-              name: "人工智慧（英語：artificial intelligence，縮寫為AI）亦稱智械、機器智慧，指由人製造出來的機器所表現出來的智慧。通常人工智慧是指透過普通電腦程式來呈現人類智慧的技術。該詞也指出研究這樣的智慧系統是否能夠實現，以及如何實現。同時，透過醫學、神經科學、機器人學及統計學等的進步，常態預測則認為人類的很多職業也逐漸被其取代。",
-              children: [
-                {
-                  id: 7,
-                  name: "Python:",
-                  children: [
-                    { id: 8, name: "Pandas" },
-                    { id: 9, name: "Numpy" },
-                  ],
-                },
-              ],
-            },
-            {
-              id: 10,
-              name: "material2 :",
-              children: [
-                {
-                  id: 11,
-                  name: "src :",
-                  children: [
-                    { id: 12, name: "v-btn : ts" },
-                    { id: 13, name: "v-card : ts" },
-                    { id: 14, name: "v-window : ts" },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: 15,
-          name: "Downloads :",
-          children: [
-            { id: 16, name: "October : pdf" },
-            { id: 17, name: "November : pdf" },
-            { id: 18, name: "Tutorial : html" },
-          ],
-        },
-        {
-          id: 19,
-          name: "Videos :",
-          children: [
-            {
-              id: 20,
-              name: "Tutorials :",
-              children: [
-                { id: 21, name: "Basic layouts : mp4" },
-                { id: 22, name: "Advanced techniques : mp4" },
-                { id: 23, name: "All about app : dir" },
-              ],
-            },
-            { id: 24, name: "Intro : mov" },
-            { id: 25, name: "Conference introduction : avi" },
-          ],
-        },
-      ],
+      courses: null,
+      colors: ["#ef5350", "#ef9a9a", "#ffb74d"],
     };
+  },
+
+  async mounted() {
+    let id = this.$store.state.selectMajor.id;
+    this.axios
+      .get("http://34.145.96.108:3000/api/v1/courses/" + id)
+      .then((response) => (this.courses = response.data));
   },
 };
 </script>
