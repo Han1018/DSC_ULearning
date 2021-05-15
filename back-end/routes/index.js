@@ -48,50 +48,51 @@ router.get("/api/v1/majors/:id", (req, res, next) => {
 // GET api/v1/courses/id
 router.get("/api/v1/course/:id", async (req, res) => {
 
-  let majorsList = ["程式基礎", "崁入式系統", "網路應用", "人工智慧", "數據分析"]
-  let majorId = req.params.id - 1; //前端預設為1開始，所以減1
+  // let majorsList = ["程式基礎", "崁入式系統", "網路應用", "人工智慧", "數據分析"]
+  // let majorId = req.params.id - 1; //前端預設為1開始，所以減1
 
-  // console.log(await models.opencourse_infos.findAll({ where: { major: majorsList[majorId]} }));
-  let subList = [];
-  let major = majorsList[majorId];
-  try {
-    const items = await models.opencourse_infos.findAll({ where: { major: major }, group: 'sub_major' });
-    items.forEach(e => { subList.push(e.sub_major); });
-  } catch (error) {
-    console.log("xxx => ", error);
-    res.status(400);
-  }
+  // // console.log(await models.opencourse_infos.findAll({ where: { major: majorsList[majorId]} }));
+  // let subList = [];
+  // let major = majorsList[majorId];
+  // try {
+  //   const items = await models.opencourse_infos.findAll({ where: { major: major }, group: 'sub_major' });
+  //   items.forEach(e => { subList.push(e.sub_major); });
+  // } catch (error) {
+  //   console.log("xxx => ", error);
+  //   res.status(400);
+  // }
 
-  //搜尋sub_major 的所有課程
-  let courses = []
-  for (let i = 0; i < subList.length; i++) {
+  // //搜尋sub_major 的所有課程
+  // let courses = []
+  // for (let i = 0; i < subList.length; i++) {
 
-    let tmp = {};
-    let children = [];
-    tmp.id = i + 1;
-    tmp.name = subList[i];
+  //   let tmp = {};
+  //   let children = [];
+  //   tmp.id = i + 1;
+  //   tmp.name = subList[i];
 
-    try {
-      const items = await models.opencourse_infos.findAll({ where: { sub_major: subList[i] } });
+  //   try {
+  //     const items = await models.opencourse_infos.findAll({ where: { sub_major: subList[i] } });
 
-      for (let j = 0; j < items.length; j++) {
-        children.push({
-          id: j + 1,
-          name: items[j].dataValues.title,
-          desc: items[j].dataValues.desription,
-          link: items[j].dataValues.link
-        })
-      }
-      tmp.children = children;
-      courses.push(tmp);
+  //     for (let j = 0; j < items.length; j++) {
+  //       children.push({
+  //         id: j + 1,
+  //         name: items[j].dataValues.title,
+  //         desc: items[j].dataValues.desription,
+  //         link: items[j].dataValues.link
+  //       })
+  //     }
+  //     tmp.children = children;
+  //     courses.push(tmp);
 
-    } catch (error) {
-      console.log("sub_major => ", error);
-      res.status(400);
-    }
-  }
+  //   } catch (error) {
+  //     console.log("sub_major => ", error);
+  //     res.status(400);
+  //   }
+  // }
 
-  res.json(courses);
+  // res.json(courses);
+  res.send("ttt");
 });
 
 
