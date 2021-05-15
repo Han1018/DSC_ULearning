@@ -59,9 +59,13 @@ router.get("/api/v1/course/:id", async (req, res) => {
     })
     .catch(err => {
       console.log("xxx => ", err);
-      res.status(400)
+      res.status(400);
     });
-
+  if (subList == null) {
+    console.log("null => ", err);
+    res.status(400);
+    return;
+  }
   //搜尋sub_major 的所有課程
   let courses = []
   for (let i = 0; i < subList.length; i++) {
@@ -85,7 +89,7 @@ router.get("/api/v1/course/:id", async (req, res) => {
       })
       .catch(err => {
         console.log("sub_major => ", err);
-        res.status(400)
+        res.status(400);
       })
     courses.push(result);
   }
