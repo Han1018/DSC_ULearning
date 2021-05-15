@@ -38,7 +38,11 @@ module.exports = (sequelize, Datatypes) => {
       defaultValue: "",
     },
     major: {
-      type: Sequelize.TEXT,
+      type: Sequelize.STRING(50),
+      defaultValue: "",
+    },
+    sub_major: {
+      type: Sequelize.STRING(50),
       defaultValue: "",
     },
     createdAt: {
