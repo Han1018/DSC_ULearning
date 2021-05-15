@@ -48,9 +48,22 @@ router.get("/api/v1/majors/:id", (req, res, next) => {
 // GET api/v1/courses/id
 router.get("/api/v1/course/:id", async (req, res) => {
   let majorsList = ["程式基礎", "崁入式系統", "網路應用", "人工智慧", "數據分析"]
-  let majorId = req.params.id - 1; //前端預設為1開始，所以減1
+  var result = []
+  if (req.params.id != 1) { res.json({}) }
+  for (let i = 0; i < majorsList.length; i++) {
+    result.push(
+      {
+        id: i + 1,
+        name: majorsList[i],
+        desription: "wiki"
+      }
+    );
+  }
+  res.json(result);
+  // let majorsList = ["程式基礎", "崁入式系統", "網路應用", "人工智慧", "數據分析"]
+  // let majorId = req.params.id - 1; //前端預設為1開始，所以減1
 
-  // console.log(await models.opencourse_infos.findAll({ where: { major: majorsList[majorId]} }));
+  // // console.log(await models.opencourse_infos.findAll({ where: { major: majorsList[majorId]} }));
   // let subList = [];
   // let major = majorsList[majorId];
   // try {
@@ -90,7 +103,7 @@ router.get("/api/v1/course/:id", async (req, res) => {
   //   }
   // }
 
-  res.json("courses");
+  // res.json(courses);
 });
 
 
