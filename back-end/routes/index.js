@@ -56,22 +56,22 @@ router.get("/api/v1/course/:id", async (req, res) => {
     const items = await models.opencourse_infos.findAll({ where: { major: majorsList[majorId] }, group: 'sub_major', raw: true });
     items.forEach(e => { subList.push(e['sub_major']); });
   } catch (error) {
-    console.log("xxx => ", err);
+    console.log("xxx => ", error);
     res.status(400);
   }
 
   //搜尋sub_major 的所有課程
   let courses = []
-  console.log("---------------------------");
   for (let i = 0; i < subList.length; i++) {
+
     let tmp = {};
     let children = [];
     tmp.id = i + 1;
     tmp.name = subList[i];
 
-    console.label();
     try {
       const items = await models.opencourse_infos.findAll({ where: { sub_major: subList[i] } });
+
       for (let j = 0; j < items.length; j++) {
         children.push({
           id: j + 1,
@@ -81,10 +81,10 @@ router.get("/api/v1/course/:id", async (req, res) => {
         })
       }
       tmp.children = children;
-      courses.push(result);
+      courses.push(tmp);
 
     } catch (error) {
-      console.log("sub_major => ", err);
+      console.log("sub_major => ", error);
       res.status(400);
     }
   }
