@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+const _db = require("../models");
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
@@ -8,20 +8,17 @@ router.get('/', function (req, res, next) {
 
 // 建立course tree api
 router.get("/api/v1/courses", (req, res, next) => {
-
-  res.json(
-    [
+  var courseList = ["計算機組織", "資料庫", "資料結構", "人工智慧", "數據分析"]
+  var result = []
+  for (let i = 0; i < len(courseList); i++) {
+    result.push(
       {
-        id: 4,
-        name: "資料庫 ",
-        descption: "wiki",
-      },
-      {
-        id: 5,
-        name: "人工智慧 :",
-        descption: "wiki",
-      },
-    ]
-  );
+        id: i,
+        name: courseList[i],
+        desription: "wiki"
+      }
+    );
+  }
+  res.json(result);
 });
 module.exports = router;

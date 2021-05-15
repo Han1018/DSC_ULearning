@@ -1,5 +1,5 @@
 'use strict';
-const { Model } = require('sequelize');
+const { Sequelize, Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define('opencourse_infos', {
     id: {
