@@ -1,16 +1,19 @@
 var express = require('express');
 var router = express.Router();
-const _db = require("../models");
+const models = require('../models');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-// 建立course tree api
-router.get("/api/v1/courses", (req, res, next) => {
+// 建立course tree api 
+// GET api/v1/courses
+router.get("/api/v1/courses/:id", (req, res, next) => {
   var courseList = ["計算機組織", "資料庫", "資料結構", "人工智慧", "數據分析"]
   var result = []
-
+  if (req.params.id != 1) { res.json({}) }
   for (let i = 0; i < courseList.length; i++) {
     result.push(
       {
@@ -23,6 +26,8 @@ router.get("/api/v1/courses", (req, res, next) => {
   res.json(result);
 });
 
+// 科系分類API 
+// GET api/v1/majors
 router.get("/api/v1/majors", (req, res, next) => {
   var majorList = ["資訊工程", "國際貿易", "經濟", "機械工程", "日語文學", "英語文學", "設計", "心理學"]
   var result = []
@@ -38,7 +43,12 @@ router.get("/api/v1/majors", (req, res, next) => {
   res.json(result);
 });
 
+// 查詢科系OpenCourse內容API api/v1/courses/id
+// GET api/v1/courses/id
+router.get("api/v1/courses/:id", (req, res, next) => {
 
+  res.json(result);
+});
 
 
 module.exports = router;

@@ -1,7 +1,7 @@
 'use strict';
 const { Sequelize, Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define('opencourse_infos', {
+  const OpenCourse = sequelize.define('opencourse_infos', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -34,6 +34,14 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: "",
       allowNull: true,
     },
+    type: {
+      type: Sequelize.STRING(50),
+      defaultValue: "",
+    },
+    major: {
+      type: Sequelize.TEXT,
+      defaultValue: "",
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE
@@ -42,5 +50,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: Sequelize.DATE
     }
-  })
-};
+  });
+
+  OpenCourse.sync({ force: false });
+  return OpenCourse;
+}
