@@ -52,9 +52,10 @@ router.get("/api/v1/course/:id", async (req, res) => {
 
   // console.log(await models.opencourse_infos.findAll({ where: { major: majorsList[majorId]} }));
   let subList = [];
+  let major = majorsList[majorId];
   try {
-    const items = await models.opencourse_infos.findAll({ where: { major: majorsList[majorId] }, group: 'sub_major', raw: true });
-    items.forEach(e => { subList.push(e['sub_major']); });
+    const items = await models.opencourse_infos.findAll({ where: { major: major }, group: 'sub_major' });
+    items.forEach(e => { subList.push(e.sub_major); });
   } catch (error) {
     console.log("xxx => ", error);
     res.status(400);
