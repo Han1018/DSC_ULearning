@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 router.get("/api/v1/courses", (req, res, next) => {
   var courseList = ["計算機組織", "資料庫", "資料結構", "人工智慧", "數據分析"]
   var result = []
-  for (let i = 0; i < len(courseList); i++) {
+  for (let i = 0; i < courseList.length; i++) {
     result.push(
       {
         id: i,
