@@ -1,6 +1,5 @@
-'use strict';
-const { Sequelize, Model } = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+const Sequelize = require('sequelize');
+module.exports = (sequelize, Datatypes) => {
   const OpenCourse = sequelize.define('opencourse_infos', {
     id: {
       allowNull: false,
@@ -34,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: "",
       allowNull: true,
     },
-    type: {
+    subj: {
       type: Sequelize.STRING(50),
       defaultValue: "",
     },
@@ -51,7 +50,6 @@ module.exports = (sequelize, DataTypes) => {
       type: Sequelize.DATE
     }
   });
-
   OpenCourse.sync({ force: false });
   return OpenCourse;
 }
