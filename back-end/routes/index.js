@@ -2,7 +2,10 @@ var express = require('express');
 var router = express.Router();
 const models = require('../models');
 
+var cors = require('cors');
 var app = express();
+app.use(cors())
+
 //设置跨域访问
 app.all('*', function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
