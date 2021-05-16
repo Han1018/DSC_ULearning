@@ -2,19 +2,13 @@ module.exports = {
   transpileDependencies: ["vuetify"],
 
   chainWebpack: (config) => {
-    config.module
-      .rule("vue")
-      .use("vue-loader")
-      .tap((options) => {
-        // modify the options...
-        return options;
-      });
+    config.module.rules.delete("eslint");
   },
 
   devServer: {
     proxy: {
       "/api": {
-        target: "http://34.145.96.108",
+        target: "http://34.145.96.108/api/v1",
         ws: true,
         changeOrigin: true,
         pathRewrite: {
@@ -22,7 +16,7 @@ module.exports = {
         },
       },
     },
-    port: "3000",
+    port: "8080",
   },
 
   publicPath: process.env.NODE_ENV === "production" ? "/DSC_ULearning/" : "/",

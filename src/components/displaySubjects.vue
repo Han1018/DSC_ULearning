@@ -44,9 +44,12 @@ export default {
   },
 
   async mounted() {
-    this.axios
-      .get("http://34.145.96.108:3000/api/v1/subjects")
-      .then((response) => (this.majors = response.data));
+    // this.axios
+    //   .get("http://34.145.96.108:3000/api/v1/subjects")
+    //   .then((response) => (this.majors = response.data));
+    this.axios({ method: "get", url: "/api/subjects" }).then(
+      (response) => (this.majors = response.data)
+    );
   },
 };
 </script>
