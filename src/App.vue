@@ -1,9 +1,12 @@
 <template>
   <v-app>
     <appbar />
-    <v-content style="height: 100vh; max-height: 100%">
+    <v-container
+      fluid
+      style="height: 100vh; min-height: 100%; max-height: 100%"
+    >
       <router-view></router-view>
-    </v-content>
+    </v-container>
   </v-app>
 </template>
 

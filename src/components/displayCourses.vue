@@ -14,7 +14,7 @@
           {{ item.desription }}
         </v-card-subtitle>
         <br />
-        <v-btn text :to="{ name: 'Courses' }"> 選擇向度 </v-btn>
+        <v-btn text @click="selectCourse(item)"> 選擇課程 </v-btn>
       </v-card>
     </div>
     <div v-else>
@@ -35,14 +35,21 @@ export default {
   data() {
     return {
       courses: null,
-      colors: ["#ef5350", "#ef9a9a", "#ffb74d"],
+      colors: ["#bbdefb", "#ef5350", "#ef9a9a", "#ffb74d"],
     };
+  },
+
+  methods: {
+    selectCourse(val) {
+      this.$store.commit("setCourse", val);
+      this.$router.push({ name: "Videos" });
+    },
   },
 
   async mounted() {
     let id = this.$store.state.selectMajor.id;
     this.axios
-      .get("http://34.145.96.108:3000/api/v1/courses/" + id)
+      .get("http://34.145.96.108:3000/api/v1/course/" + id)
       .then((response) => (this.courses = response.data));
   },
 };

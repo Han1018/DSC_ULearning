@@ -1,23 +1,36 @@
 <template>
   <v-container>
-    <v-btn icon color="transparent" dark :to="{ name: 'Courses' }">
-      <v-icon color="grey">mdi-chevron-left</v-icon>
-      <span class="grey--text">返回</span>
-    </v-btn>
     <v-row>
       <v-col cols="12">
-        <displayVidoes />
+        <v-card-title class="red--text">
+          <router-link
+            to="/"
+            style="text-decoration: none; color: inherit; text-decoration: none"
+          >
+            WikiLearngin | >
+          </router-link>
+          <v-card-subtitle class="secondary--text">自學平台</v-card-subtitle>
+        </v-card-title>
+        <v-toolbar elevation="0" style="position: relative; top: -35px">
+          <v-btn icon color="transparent" dark :to="{ name: 'Majors' }">
+            <v-icon color="grey">mdi-chevron-left</v-icon>
+            <span class="grey--text">返回</span>
+          </v-btn>
+          <v-card-subtitle>學習影片</v-card-subtitle>
+        </v-toolbar>
+        <displayVideos style="position: relative; top: -20px" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import displayVidoes from "../components/displayVideos.vue";
+import displayVideos from "../components/displayVideos.vue";
+// import DisplayVideos from "../components/displayVideos.vue";
 
 export default {
-  components: { displayVidoes },
-  name: "Courses",
+  components: { displayVideos },
+  name: "Video",
   data() {
     return {};
   },

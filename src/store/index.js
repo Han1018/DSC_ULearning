@@ -12,8 +12,10 @@ export default new Vuex.Store({
   state: {
     login: false,
     user: null,
+    selectSubject: null,
     selectMajor: null,
-    selectCourses: null,
+    selectCourse: null,
+    selectVidoe: null,
   },
   mutations: {
     async setUser(state, payload) {
@@ -22,8 +24,17 @@ export default new Vuex.Store({
       state.user = auth;
       if (payload == null) return;
     },
+    setSubject(state, payload) {
+      state.selectSubject = payload;
+    },
     setMajor(state, payload) {
       state.selectMajor = payload;
+    },
+    setCourse(state, payload) {
+      state.selectCourse = payload;
+    },
+    setVideo(state, payload) {
+      state.selectVidoe = payload;
     },
   },
   actions: {
