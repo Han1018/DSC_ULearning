@@ -48,9 +48,11 @@ export default {
 
   async mounted() {
     let id = this.$store.state.selectMajor.id;
-    this.axios
-      .get("http://34.145.96.108:3000/api/v1/course/" + id)
-      .then((response) => (this.courses = response.data));
+    let config = {
+      method: "get",
+      url: "api/course/" + id,
+    };
+    this.axios(config).then((response) => (this.courses = response.data));
   },
 };
 </script>

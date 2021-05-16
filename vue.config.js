@@ -8,11 +8,11 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "http://34.145.96.108/api/v1",
+        target: "http://34.145.96.108:3000/api/v1",
         ws: true,
         changeOrigin: true,
         pathRewrite: {
-          "^/api": "", //請求的時候使用這個api就可以
+          "^/api": "/api", //請求的時候使用這個api就可以
         },
       },
     },
