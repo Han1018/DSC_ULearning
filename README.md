@@ -1,8 +1,6 @@
 # DSC_ULearning #
 
-<video width="100%"  controls>
-  <source src="demo.mov" type="video/mp4">
-</video>
+[![Demo](https://res.cloudinary.com/marcomontalbano/image/upload/v1630740882/video_to_markdown/images/youtube--rmWRNC3J2R8-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/rmWRNC3J2R8 "Demo")
 
 ## Contributors
 
