@@ -1,6 +1,8 @@
 # DSC_ULearning #
 
-<video width="100%" src="demo.mov"></video>
+<video width="100%"  controls>
+  <source src="demo.mov" type="video/mp4">
+</video>
 
 ## Contributors
 
