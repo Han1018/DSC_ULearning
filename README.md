@@ -17,11 +17,6 @@
 * 整合過多的學習資訊
 * 資料分析/爬蟲 : Python / Spark
 
-## 使用到的技術
-
-* 後端 : Express、FireBase、GCP
-* 前端 : Vue.js
-
 ## 如何使用
 
 1. 登入
@@ -33,3 +28,8 @@
 
 1. 更好的 model、爬蟲
 2. AI 語意辨識 種類
+
+## 使用到的技術
+
+* 後端 : Express、FireBase、GCP
+* 前端 : Vue.js
