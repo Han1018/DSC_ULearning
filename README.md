@@ -1,6 +1,7 @@
 # DSC_ULearning #
 
-[![Demo](https://res.cloudinary.com/marcomontalbano/image/upload/v1630740882/video_to_markdown/images/youtube--rmWRNC3J2R8-c05b58ac6eb4c4700831b2b3070cd403.jpg)](demo.mov "Demo")
+[![Watch the Demo!](https://res.cloudinary.com/marcomontalbano/image/upload/v1630740882/video_to_markdown/images/youtube--rmWRNC3J2R8-c05b58ac6eb4c4700831b2b3070cd403.jpg)
+](https://youtu.be/rmWRNC3J2R8)
 
 ## Contributors
 
@@ -10,7 +11,7 @@
 * 薛賀升 (t107590017@ntut.org.tw)
 
 ## 構思
-![](concept.png)
+![](https://user-images.githubusercontent.com/61962782/132136224-ea146691-3c7b-4407-8aa8-5d4add4014f2.png)
 
 ## 想要解決什麼問題
 * 系統化的自主學習服務
