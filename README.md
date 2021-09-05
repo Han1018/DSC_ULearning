@@ -1,6 +1,7 @@
 # DSC_ULearning #
 
-[![Demo](https://res.cloudinary.com/marcomontalbano/image/upload/v1630740882/video_to_markdown/images/youtube--rmWRNC3J2R8-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://user-images.githubusercontent.com/61962782/132136133-161c29c0-31b6-48be-96b7-7965705b4d57.mp4 "Demo")
+[![Watch the Demo!](https://res.cloudinary.com/marcomontalbano/image/upload/v1630740882/video_to_markdown/images/youtube--rmWRNC3J2R8-c05b58ac6eb4c4700831b2b3070cd403.jpg)
+](https://user-images.githubusercontent.com/61962782/132136133-161c29c0-31b6-48be-96b7-7965705b4d57.mp4)
 
 ## Contributors
 
